@@ -1,0 +1,11 @@
+@use "../../attributes.scss";
+
+.Product {
+  // background-color: red;
+  width: attributes.$cardWidth;
+  border: 2px solid black;
+  margin: 10px;
+  &__Image {
+    width: 100%;
+  }
+}

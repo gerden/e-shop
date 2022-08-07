@@ -1,0 +1,19 @@
+@use "../../attributes.scss";
+
+.Home {
+  text-align: center;
+  &__Grid {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    @media only screen and (max-width: (attributes.$cardWidth * 2)) {
+      grid-template-columns: 1fr;
+    }
+    @media only screen and (min-width: (attributes.$cardWidth * 2)) and (max-width: (attributes.$cardWidth * 3)) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media only screen and (min-width: (attributes.$cardWidth * 3)) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
