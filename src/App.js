@@ -22,9 +22,9 @@ function App() {
       <Nav />
       {/* <button onClick={seedStudents}>Seed DB</button> */}
       <Routes>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
-        <Route path="/Home/:productId" element={<Details />} />
+        <Route path="/:productId" element={<Details />} />
 
         <Route path="/ShoppingCart" element={<ShoppingCart />} />
       </Routes>

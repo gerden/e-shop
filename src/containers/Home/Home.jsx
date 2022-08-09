@@ -1,28 +1,25 @@
 import React from "react";
-import data from "../students.json";
+// import data from "../students.json";
 import styles from "./Home.module.scss";
 import Product from "../../components/Product";
 import { useState, useEffect } from "react";
 import ProductCarousel from "../../components/ProductCarousel";
-import {
-  seedStudent,
-  getProducts,
-  updateStudent,
-  deleteStudent,
-  createStudent,
-} from "../../services/server";
+import { getProducts } from "../../services/server";
 
 function Home() {
   // let products = data;
 
   const [products, setProduct] = useState([]);
-  console.log("products");
-  console.log(products);
 
   const getData = async () => {
     const data = await getProducts();
     setProduct(data);
   };
+
+  // useEffect(() => {
+  //   console.log("products");
+  //   console.log(products.number);
+  // }, [products]);
 
   useEffect(() => {
     getData();

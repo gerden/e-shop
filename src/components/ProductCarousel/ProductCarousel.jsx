@@ -9,18 +9,7 @@ function ProductCarousel() {
   const [imageNumber, setImageNumber] = useState(0);
   const { productId } = useParams();
   const id = parseInt(productId);
-  // if (singleProduct) {
-  //   setLoading(false);
-  // }
   let size = 0;
-
-  console.log("testID");
-  console.log(id);
-  console.log("getSingleProduct(id)");
-  console.log(FavouriteProducts);
-  console.log(FavouriteProduct);
-
-  // FavouriteProducts;
 
   if (FavouriteProducts != undefined) {
     console.log("count mmmmmmmmmmmmm");
@@ -71,7 +60,9 @@ function ProductCarousel() {
           ></img>
           <div>
             <button onClick={() => imageDecrease()}>{"<"}</button>
-            <NavLink to={FavouriteProduct.id.toString()}>Details/Buy</NavLink>
+            <NavLink to={FavouriteProduct.number.toString()}>
+              Details/Buy
+            </NavLink>
             <button onClick={() => imageIncrease()}>{">"}</button>
           </div>
         </main>

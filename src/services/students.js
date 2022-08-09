@@ -1,7 +1,7 @@
 const students = [
   //https://www.lenovo.com/au/en/p/laptops/thinkpad/thinkpadx1/x1-carbon-g9/20xw00j0au?cid=au_sem_cdwz8&cid=au_sem_cdwz8&CATARGETID=120088020000025785&CADevice=c&gclid=Cj0KCQjwxb2XBhDBARIsAOjDZ34Wg3YU33oF13eajyReNWtUHFaR-eoHxdJFG73cg-8jvju_lYgeFVgaAta2EALw_wcB
   {
-    id: 1,
+    number: 1,
     name: "ThinkPad X1 Carbon Gen 9 - Intel® Core™",
     pricePerUnit: 2455.65,
     quantity: 22,
@@ -13,7 +13,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/apple-macbook-air-13-inch-with-m2-chip-256gb-ssd-space-grey-2022
   {
-    id: 2,
+    number: 2,
     name: "Apple MacBook Air 13-inch with M2 chip, 256GB SSD ",
     pricePerUnit: 20,
     quantity: 22,
@@ -28,7 +28,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/hp-6x0r7pa-15-6-fhd-laptop-512gb-ryzen-5
   {
-    id: 3,
+    number: 3,
     name: "HP 6X0R7PA 15.6 inch FHD Laptop (512GB) [Ryzen 5]",
     pricePerUnit: 1199,
     quantity: 8,
@@ -40,7 +40,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/hp-envy-x360-15-6-fhd-2-in-1-laptop-512gb-intel-i5
   {
-    id: 4,
+    number: 4,
     name: "HP Envy X360 15.6 inch FHD 2-in-1 Laptop (512GB) [Intel i5]",
     pricePerUnit: 2099,
     quantity: 16,
@@ -52,7 +52,7 @@ const students = [
   },
   //https://www.lenovo.com/au/en/p/laptops/ideapad/ideapad-5/ideapad-5-14are05/82lm00ttau?cid=au_sem_cdwz8&gclid=Cj0KCQjwxb2XBhDBARIsAOjDZ36Do_hqev2V56-EeMWzHsJcNPvv8L9Bde-N4rujpwS0zUzBokKH1VoaAsYbEALw_wcB
   {
-    id: 5,
+    number: 5,
     name: "IdeaPad Slim 5 (14, Gen 5) AMD (Platinum Grey)",
     pricePerUnit: 849,
     quantity: 28,
@@ -65,7 +65,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/apple-macbook-pro-13-inch-with-m2-chip-512gb-ssd-space-grey-2022
   {
-    id: 6,
+    number: 6,
     name: "Apple MacBook Pro 13-inch with M2 chip, 512GB SSD (Space Grey) [2022]",
     pricePerUnit: 2299,
     quantity: 42,
@@ -78,7 +78,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/hp-spectre-x360-evo-16-wquxga-oled-2-in-1-laptop-intel-i7-rc-a370m
   {
-    id: 7,
+    number: 7,
     name: "Lenovo Legion 5i 15.6 inch FHD Gaming Laptop (12th Gen Intel i7) [GeForce RTX 3050Ti]",
     pricePerUnit: 2699,
     quantity: 11,
@@ -90,7 +90,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/hp-pavilion-x360-14-fhd-2-in-1-laptop-512gb-intel-i5
   {
-    id: 8,
+    number: 8,
     name: "HP Pavilion X360 14 inch FHD 2-in-1 Laptop (512GB) [Intel i5]",
     pricePerUnit: 1499,
     quantity: 22,
@@ -102,7 +102,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/hp-victus-15-6-fhd-gaming-laptop-intel-i5-gtx-1650
   {
-    id: 9,
+    number: 9,
     name: "HP Victus 15.6 inch FHD Gaming Laptop (Intel i5) [GTX 1650]]",
     pricePerUnit: 1599,
     quantity: 14,
@@ -114,7 +114,7 @@ const students = [
   },
   //https://www.jbhifi.com.au/products/msi-vector-gp76-17-3-full-hd-gaming-laptop-12th-gen-intel-i9rtx-3080
   {
-    id: 10,
+    number: 10,
     name: "MSI Vector GP76 17.3 inch Full HD Gaming Laptop (12th Gen Intel i9)[RTX 3080]",
     pricePerUnit: 4899,
     quantity: 3,

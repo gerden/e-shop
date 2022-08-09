@@ -19,20 +19,57 @@ export const getProducts = async () => {
 
   return data;
 };
-export const getSingleProduct = async (id) => {
+export const getCartProducts = async () => {
+  const collectionRef = firestore.collection("Cart");
+
+  // QuerySnapshot
+  // https://firebase.google.com/docs/reference/js/v8/firebase.firestore.QuerySnapshot
+  const querySnap = await collectionRef.get();
+
+  // Getting array of all documents
+  const documents = querySnap.docs;
+
+  // use data() method to get an object containing the documents data
+
+  const data = documents.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+
+  return data;
+};
+
+export const getSingleProduct = async (number) => {
   const products = await getProducts();
 
-  console.log("herehere here");
-
-  console.log(products.documents);
-
-  const singleProduct = products.find((product) => product.id === id);
+  const singleProduct = products.find((product) => product.number === number);
 
   if (!singleProduct) {
     throw new Error("Couldn't find a product with that ID");
   }
 
   return singleProduct;
+};
+
+export const CheckForCartProduct = async (number) => {
+  console.log("CheckForCartProduct");
+  console.log(number);
+  const products = await getCartProducts();
+  console.log(products);
+
+  const singleProduct = products.find((product) => product.number === number);
+  console.log(singleProduct);
+  console.log("check2");
+
+  if (!singleProduct) {
+    console.log("check21");
+    console.log("false");
+    return false;
+  } else {
+    console.log("2222");
+    console.log("true");
+
+    return true;
+  }
 };
 
 export const seedStudents = async () => {
@@ -64,41 +101,50 @@ export const getFavouriteProducts = async (id) => {
 
   return favouriteProducts;
 };
-export const addCart = async (id, amount) => {
+export const addCart = async (product, amount) => {
   const collectionRef = firestore.collection("Cart");
 
-  const newProducts = await getSingleProduct(id);
+  const newProducts = await getSingleProduct(product.number);
+  console.log("result");
+  console.log(product.number);
+  const result = CheckForCartProduct(product.number) === true;
+  console.log(result);
 
   if (newProducts.quantity < amount) {
     alert("We don't have that many in stock");
+  } else if (amount <= 0) {
+    alert("Must ask for more than 0");
+  } else if (CheckForCartProduct(product.number) === true) {
+    alert(
+      "You already have this product go to the wish list if you want to change the amount of remove it"
+    );
   } else {
-    console.log("test");
-    console.log({ amount: amount });
     collectionRef.add({
-      id: newProducts.id,
+      number: newProducts.number,
       amount: amount,
     });
 
-    updateProductAmount(id, amount);
+    updateProductAmount(product, product.quantity - amount);
   }
 };
 
-export const updateProductAmount = async (id, amount) => {
+export const updateProductAmount = async (product, amount) => {
   const collectionRef = firestore.collection("Laptops");
-  // docRef.set(
-  //   {
-  //     ticket: true,
-  //   },
-  //   { merge: true }
-  // );
-  // const docRef = collectionRef.doc(id);
-  console.log("testing55555");
 
-  // console.log(docRef);
-  console.log(id);
-  console.log(amount);
-
-  // await docRef.update(amount);
+  const docRef = collectionRef.doc(product.id);
+  await docRef.update({ quantity: amount });
 };
 
-export const deleteCartProduct = async (id, amount) => {};
+export const updateCartProductAmount = async (product, amount) => {
+  const collectionRef = firestore.collection("Cart");
+  const docRef = collectionRef.doc(product.id);
+  await docRef.update({ amount: amount });
+};
+
+export const deleteCartProduct = async (product) => {
+  const collectionRef = firestore.collection("Cart");
+
+  const docRef = collectionRef.doc(product.id);
+
+  await docRef.delete();
+};

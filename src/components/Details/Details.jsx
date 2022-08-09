@@ -15,16 +15,11 @@ import {
 function Details() {
   const [singleProduct, setsingleProduct] = useState();
   const [imageNumber, setImageNumber] = useState(0);
+  const [amount, setAmount] = useState(0);
+  const [input, setInput] = useState("0");
+
   const { productId } = useParams();
   const id = parseInt(productId);
-  // if (singleProduct) {
-  //   setLoading(false);
-  // }
-  console.log("testID");
-  console.log(id);
-  console.log("getSingleProduct(id)");
-  console.log(singleProduct);
-  // console.log(singleProduct.variants);
 
   const [products, setProducts] = useState([]);
 
@@ -44,10 +39,18 @@ function Details() {
     setsingleProduct(data);
   };
 
-  const imageChange = async (index) => {
-    // console.log(index);
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const imageChange = (index) => {
     setImageNumber(index);
   };
+
+  useEffect(() => {
+    console.log("amount TEST ", amount);
+    setAmount(parseInt(input));
+  }, [input]);
 
   useEffect(() => {
     getData();
@@ -72,21 +75,21 @@ function Details() {
             height="333"
           ></img>
           {singleProduct.variants.map((productImage, index) => {
-            console.log("singleProductmmmmmmmmmmmmmggggggggggg");
-            console.log(singleProduct);
-            console.log(singleProduct.getElementById);
             return (
               <button onClick={() => imageChange(index)} key={index}>
                 {productImage}
               </button>
             );
           })}
-          <input type="amount" id="amount"></input>
-          <button
-            onClick={() =>
-              addCart(singleProduct.id, document.getElementById("amount").value)
-            }
-          >
+          <input
+            type="number"
+            id="amount"
+            min="0"
+            max={singleProduct.quantity}
+            value={amount}
+            onChange={handleInputChange}
+          />
+          <button onClick={() => addCart(singleProduct, amount)}>
             add to cart
           </button>
         </div>
